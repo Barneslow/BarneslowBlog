@@ -25,8 +25,8 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/email", messageRoutes);
 app.use("/api/category", categoryRoutes);
 
-// app.use(notFound);
-// app.use(errorHandler);
+app.use(notFound);
+app.use(errorHandler);
 
 // error handler
 

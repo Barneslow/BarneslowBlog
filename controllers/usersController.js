@@ -35,6 +35,7 @@ exports.loginUser = expressAsyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   // if (user?.isBlocked) throw new Error("Access Denied. You have been blocked");
+  throw new Error("Invalid Login Credentials");
 
   if (user && (await user.isPasswordMatched(password))) {
     res.json({
@@ -54,7 +55,6 @@ exports.loginUser = expressAsyncHandler(async (req, res) => {
 });
 
 exports.getAllUsers = expressAsyncHandler(async (req, res) => {
-  console.log(req.headers);
   try {
     const users = await User.find({}).populate("posts");
     res.json(users);
