@@ -35,7 +35,6 @@ exports.loginUser = expressAsyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   // if (user?.isBlocked) throw new Error("Access Denied. You have been blocked");
-  throw new Error("Invalid Login Credentials");
 
   if (user && (await user.isPasswordMatched(password))) {
     res.json({
